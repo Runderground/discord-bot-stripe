@@ -17,6 +17,7 @@ CLIENT_ID="ID Do BOT"
 STRIPE_WEBHOOK_SECRET="Key Publica da Stripe"
 STRIPE_SECRET_KEY="Key Secreta da Stripe"
 ENDPOINT_SECRET="Chave secreta do ENDPOINT que você configurou para receber as webhooks"
+STRIPE_PRODUTO="Key Price que tem no produto"
 API_URL="URL da API que você irar hospedar do arquivo stripe.js"
 ```
 
