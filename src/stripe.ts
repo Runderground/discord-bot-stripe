@@ -2,6 +2,7 @@ import express from "express";
 import { PaymentInfoEmbed } from "./embeds/payment-info";
 import { ErrorEmbed } from "./embeds/error";
 import stripeLib from "stripe";
+import cors from "cors";
 import {
   Client,
   GatewayIntentBits,
@@ -11,6 +12,7 @@ import {
 
 const stripe = new stripeLib(process.env.STRIPE_SECRET_KEY as string);
 const app = express();
+app.use(cors())
 const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
 });
