@@ -87,7 +87,7 @@ async function deletePurchaseMessage(client, userId, situation) {
         console.log(msg_res_delete);
         switch (situation) {
             case 'success':
-                await dmChannel.send({ embeds: [payment_info_1.PaymentInfoEmbed.setTitle('✅ Pagamento realizado com Sucesso!').setDescription('Muito obrigado por se juntar a nós, agradecemos a preferência! 😉\n Aproveite todo o conteúdo disponível no nosso servidor.').setFooter({ text: 'Qualquer problema, contate o suporte!' })] });
+                await dmChannel.send({ embeds: [payment_info_1.PaymentInfoEmbed.setTitle('✅ Pagamento realizado com Sucesso!').setDescription('Muito obrigado por se juntar a nós, agradecemos a preferência! 😉\n\n Aproveite todo o conteúdo disponível no nosso servidor.').setFooter({ text: 'Qualquer problema, contate o suporte!' })] });
                 break;
             case 'expired':
                 await dmChannel.send({ embeds: [error_1.ErrorEmbed.setTitle('❌ Pagamento Expirado!').setDescription('Você demorou muito para realizar o pagamento, tente gerar outro link pelo servidor.').setFooter({ text: 'Qualquer problema, contate o suporte!' })] });

@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bot": "nodemon ./dist/bot.js",
-    "stripe": "nodemon ./dist/stripe.js"
+    "bot": "node ./dist/bot.js",
+    "stripe": "node ./dist/stripe.js"
   },
   "keywords": [],
   "author": "",

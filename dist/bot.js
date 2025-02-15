@@ -15,12 +15,12 @@ client.on('interactionCreate', async (interaction) => {
         const username = interaction.user.username;
         const guild = await client.guilds.fetch(process.env.GUILD_ID);
         if (!guild)
-            return interaction.reply({ embeds: [error_1.ErrorEmbed.setTitle('Ocorreu umn erro inesperado').setDescription('Ocorreu um erro ao tentar assinar o plano')], ephemeral: true });
+            return interaction.reply({ embeds: [error_1.ErrorEmbed.setTitle('❌ Ocorreu um erro inesperado').setDescription('Ocorreu um erro ao tentar assinar o plano')], ephemeral: true });
         const member = await guild.members.fetch(discordId);
         if (!member)
-            return interaction.reply({ embeds: [error_1.ErrorEmbed.setTitle('Ocorreu umn erro inesperado').setDescription('Ocorreu um erro ao tentar assinar o plano')] });
+            return interaction.reply({ embeds: [error_1.ErrorEmbed.setTitle('❌ Ocorreu umn erro inesperado').setDescription('Ocorreu um erro ao tentar assinar o plano')] });
         if (member.roles.cache.has(process.env.ROLE_ID))
-            return interaction.reply({ embeds: [error_1.ErrorEmbed.setTitle('Você já tem assinatura!').setDescription('Identificamos que você já tem acesso à assinatura, não é necessario assinar novamente.')], ephemeral: true });
+            return interaction.reply({ embeds: [error_1.ErrorEmbed.setTitle('❌ Você já tem assinatura!').setDescription('Identificamos que você já tem acesso à assinatura, não é necessario assinar novamente.').setFooter({ text: "Qualquer problema, contate o suporte!" })], ephemeral: true });
         try {
             const response = await fetch(`${process.env.API_URL}/create-checkout-session`, {
                 method: 'POST',
@@ -32,13 +32,13 @@ client.on('interactionCreate', async (interaction) => {
             const data = await response.json();
             if (data.session === 'exists') {
                 return await interaction.reply({
-                    embeds: [error_1.ErrorEmbed.setTitle('Você já tem uma sessão em Aberto!').setDescription('Você já tem uma sessão em aberto, cheque o seu privado para concluir sua assinatura.').setFooter({ text: "Qualquer problema, contate o suporte!" })],
+                    embeds: [error_1.ErrorEmbed.setTitle('❌ Você já tem uma sessão em Aberto!').setDescription('Você já tem uma sessão em aberto, cheque o seu privado para concluir sua assinatura.').setFooter({ text: "Qualquer problema, contate o suporte!" })],
                     ephemeral: true,
                 });
             }
             if (!data.url) {
                 return await interaction.reply({
-                    embeds: [error_1.ErrorEmbed.setTitle('Não foi possível gerar um link da Stripe').setDescription('Não consegui gerar um link de pagamento, tente novamente mais tarde...')],
+                    embeds: [error_1.ErrorEmbed.setTitle('❌ Não foi possível gerar um link da Stripe').setDescription('Não consegui gerar um link de pagamento, tente novamente mais tarde...')],
                     ephemeral: true,
                 });
             }
@@ -67,7 +67,7 @@ client.on('interactionCreate', async (interaction) => {
         }
         catch (error) {
             await interaction.reply({
-                embeds: [error_1.ErrorEmbed.setTitle('Ocorreu um erro inesperado').setDescription('Não consegui gerar um link de pagamento, tente novamente mais tarde...')],
+                embeds: [error_1.ErrorEmbed.setTitle('❌ Ocorreu um erro inesperado').setDescription('Não consegui gerar um link de pagamento, tente novamente mais tarde...')],
                 ephemeral: true
             });
             console.error(error);
