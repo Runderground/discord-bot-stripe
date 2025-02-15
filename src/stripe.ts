@@ -15,6 +15,10 @@ const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
 });
 
+app.get("/", (req, res) => {
+  res.send("Serviço da Stripe ativo!");
+})
+
 /* 
 
 #### Armazenamento local para armazenar os IDs dos mensagens de pagamento para trata-los posteriormente

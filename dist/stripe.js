@@ -13,6 +13,9 @@ const app = (0, express_1.default)();
 const client = new discord_js_1.Client({
     intents: [discord_js_1.GatewayIntentBits.Guilds, discord_js_1.GatewayIntentBits.GuildMessages],
 });
+app.get("/", (req, res) => {
+    res.send("Serviço da Stripe ativo!");
+});
 /*
 
 #### Armazenamento local para armazenar os IDs dos mensagens de pagamento para trata-los posteriormente
