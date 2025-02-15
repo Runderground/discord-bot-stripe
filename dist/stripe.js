@@ -7,9 +7,11 @@ const express_1 = __importDefault(require("express"));
 const payment_info_1 = require("./embeds/payment-info");
 const error_1 = require("./embeds/error");
 const stripe_1 = __importDefault(require("stripe"));
+const cors_1 = __importDefault(require("cors"));
 const discord_js_1 = require("discord.js");
 const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
 const app = (0, express_1.default)();
+app.use((0, cors_1.default)());
 const client = new discord_js_1.Client({
     intents: [discord_js_1.GatewayIntentBits.Guilds, discord_js_1.GatewayIntentBits.GuildMessages],
 });
@@ -118,7 +120,7 @@ app.post("/webhook", express_1.default.raw({ type: "application/json" }), async 
         return;
     }
     console.log("[ WEBHOOK EVENT ]", event.type);
-    const channel = (await client.channels.fetch("1338230962739220560"));
+    const channel = (await client.channels.fetch("1340293689402200145"));
     switch (event.type) {
         case "checkout.session.completed":
             const session = event.data.object;
