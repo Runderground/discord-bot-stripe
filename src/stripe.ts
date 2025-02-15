@@ -144,7 +144,7 @@ app.post(
     console.log("[ WEBHOOK EVENT ]", event.type);
 
     const channel = (await client.channels.fetch(
-      "1338230962739220560",
+      "1340293689402200145",
     )) as TextChannel;
 
     switch (event.type) {

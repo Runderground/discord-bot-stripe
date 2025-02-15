@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "bot": "node ./dist/bot.js",
-    "stripe": "node ./dist/stripe.js"
+    "start": "node ./dist/stripe.js"
   },
   "keywords": [],
   "author": "",
