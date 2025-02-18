@@ -120,7 +120,7 @@ app.post("/webhook", express_1.default.raw({ type: "application/json" }), async 
         return;
     }
     console.log("[ WEBHOOK EVENT ]", event.type);
-    const channel = (await client.channels.fetch("1340293689402200145"));
+    const channel = await client.channels.fetch("1340293689402200145");
     switch (event.type) {
         case "checkout.session.completed":
             const session = event.data.object;

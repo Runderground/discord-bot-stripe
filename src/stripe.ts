@@ -145,9 +145,7 @@ app.post(
 
     console.log("[ WEBHOOK EVENT ]", event.type);
 
-    const channel = (await client.channels.fetch(
-      "1340293689402200145",
-    )) as TextChannel;
+    const channel = await client.channels.fetch("1340293689402200145") as TextChannel;
 
     switch (event.type) {
       case "checkout.session.completed":
