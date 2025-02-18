@@ -148,7 +148,7 @@ app.post("/webhook", express_1.default.raw({ type: "application/json" }), async 
             }
             await channel.send({
                 embeds: [
-                    payment_info_1.PaymentInfoEmbed.setDescription(`**Usuário:** ${username}\n**ID:** ${userId}\n**Email:** ${email}`),
+                    payment_info_1.PaymentInfoEmbed.setDescription(`**Usuário:** ${username}\n**ID:** ${userId}\n**Email:** ${email}\n**ID da Stripe:** ${stripeId}`),
                 ],
             });
             await deletePurchaseMessage(client, userId, 'success');

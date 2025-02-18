@@ -178,7 +178,7 @@ app.post(
         await channel.send({
           embeds: [
             PaymentInfoEmbed.setDescription(
-              `**Usuário:** ${username}\n**ID:** ${userId}\n**Email:** ${email}`,
+              `**Usuário:** ${username}\n**ID:** ${userId}\n**Email:** ${email}\n**ID da Stripe:** ${stripeId}`,
             ),
           ],
         });
@@ -203,7 +203,8 @@ app.post(
         }
         break;
 
-      case "customer.subscription.deleted":
+      case "customer.subscription.deleted" :
+
         const session_deleted = event.data.object;
         console.log(session_deleted)
         let userId_deleted;

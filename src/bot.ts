@@ -1,4 +1,4 @@
-import { Client, GatewayIntentBits, ButtonBuilder, ButtonStyle, ActionRowBuilder, ActivityType, IntentsBitField } from 'discord.js';
+import { Client, GatewayIntentBits, ButtonBuilder, ButtonStyle, ActionRowBuilder, ActivityType } from 'discord.js';
 
 import { LinkEmbed } from './embeds/link';
 import { ErrorEmbed } from './embeds/error';
@@ -52,17 +52,19 @@ client.on('interactionCreate', async (interaction) => {
       const data = await response.json();
 
       if(data.session === 'exists') {
-        return await interaction.reply({
+        await interaction.reply({
           embeds: [ErrorEmbed.setTitle('❌ Você já tem uma sessão em Aberto!').setDescription('Você já tem uma sessão em aberto, cheque o seu privado para concluir sua assinatura.').setFooter({text: "Qualquer problema, contate o suporte!"})],
           ephemeral: true,
         })
+        return
       }
       
       if(!data.url) {
-        return await interaction.reply({
+        await interaction.reply({
           embeds: [ErrorEmbed.setTitle('❌ Não foi possível gerar um link da Stripe').setDescription('Não consegui gerar um link de pagamento, tente novamente mais tarde...')],
           ephemeral: true,
         })
+        return
       }
 
       const button = new ButtonBuilder()
